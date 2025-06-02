@@ -11,7 +11,9 @@ COPY . .
 
 RUN go build -o build/fizzbuzz
 
-FROM alpine:latest
+FROM scratch
+
+COPY --from=builder /app/build/fizzbuzz /fizzbuzz
 
 EXPOSE 8080
 
